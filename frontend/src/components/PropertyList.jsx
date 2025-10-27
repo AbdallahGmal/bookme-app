@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropertyCard from './PropertyCard';
+import.meta.env
 import { Link } from 'react-router-dom';
 
 const PropertyList = () => {
@@ -12,7 +13,7 @@ const PropertyList = () => {
     const fetchProperties = async () => {
       try {
         // IMPORTANT: Make sure your backend (http://localhost:5000) is running!
-        const response = await axios.get('https://bookme-api-abdallahgmal.vercel.app/api/properties');
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/properties`);
         setProperties(response.data);
       } catch (error) {
         console.error('Error fetching properties:', error);
