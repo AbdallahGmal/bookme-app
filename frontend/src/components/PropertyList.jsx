@@ -12,7 +12,7 @@ const PropertyList = () => {
     const fetchProperties = async () => {
       try {
         // IMPORTANT: Make sure your backend (http://localhost:5000) is running!
-        const response = await axios.get('http://localhost:5000/api/properties');
+        const response = await axios.get('https://bookme-api-abdallahgmal.vercel.app/api/properties');
         setProperties(response.data);
       } catch (error) {
         console.error('Error fetching properties:', error);
