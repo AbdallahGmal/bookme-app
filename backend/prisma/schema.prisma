@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+// Add these models to your backend/prisma/schema.prisma file
+
+model Property {
+  id          Int      @id @default(autoincrement())
+  // ... other fields like 'title', 'price', etc.
+
+  location    Location @relation(fields: [locationId], references: [id])
+  locationId  Int      @unique
+}
+
+model Location {
+  id          Int       @id @default(autoincrement())
+  // ... other fields like 'address', 'city', etc.
+
+  property    Property?
+}
